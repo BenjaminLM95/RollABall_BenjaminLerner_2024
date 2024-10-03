@@ -63,6 +63,11 @@ public class PlayerController : MonoBehaviour
         {
             isGrounded = true;             
         }
+
+        if (other.gameObject.CompareTag("Bullet")) 
+        {
+            other.gameObject.SetActive(false); 
+        }
          
     }
 
@@ -80,8 +85,7 @@ public class PlayerController : MonoBehaviour
         if(count >= 12) 
         {
             door1.SetActive(false); 
-            //winTextObject.SetActive(true);
-            //speed = 0; 
+             
         }
     }
 
