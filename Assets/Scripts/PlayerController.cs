@@ -6,6 +6,10 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using TMPro;
 using JetBrains.Annotations;
+//using System.Runtime.Remoting.Messaging;
+using System;
+using System.Security.Cryptography;
+using System.Collections.Specialized;
 
 public class PlayerController : MonoBehaviour
 {
@@ -18,9 +22,14 @@ public class PlayerController : MonoBehaviour
     public Vector3 jump;
     public bool isGrounded;        
     public TextMeshProUGUI countText;
-    public GameObject winTextObject; 
+    public GameObject winTextObject;
+    public GameObject gameOverText;
     private int count;
-    public GameObject door1; 
+    public int life = 2; 
+    private bool gameOver = false;
+    private bool gameWin = false;
+    public GameObject playerObject; 
+    
 
     void Start()
     {
@@ -28,24 +37,36 @@ public class PlayerController : MonoBehaviour
         count = 0;
         SetCountText();
         winTextObject.SetActive(false);
+        gameOverText.SetActive(false);
         jump = new Vector3(0.0f, 3.0f, 0.0f); 
+        
         
     }
 
     private void FixedUpdate()
     {
+        if(gameOver == false) { 
         Vector3 movement = new Vector3(movementX, 0.0f, movementY); 
         rb.AddForce(movement * speed); 
-        
+        }
     }
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
+        Vector3 playerPos = playerObject.transform.position;
+
+        if (Input.GetKeyDown(KeyCode.Space) && isGrounded && !gameOver)
         {
             rb.AddForce(jump * jumpForce, ForceMode.Impulse);
 
             isGrounded = false;            
+        }
+        SetCountText();
+
+        if((life == 0 || playerPos.y < -20f) && gameWin == false) 
+        {
+            gameOver = true; 
+            gameOverText.SetActive(true); 
         }
     }
 
@@ -66,7 +87,13 @@ public class PlayerController : MonoBehaviour
 
         if (other.gameObject.CompareTag("Bullet")) 
         {
-            other.gameObject.SetActive(false); 
+            other.gameObject.SetActive(false);
+
+            if(life > 0) 
+            {
+                life--;
+            }
+             
         }
          
     }
@@ -81,11 +108,11 @@ public class PlayerController : MonoBehaviour
 
     void SetCountText() 
     {
-        countText.text = "Count: " + count.ToString(); 
-        if(count >= 12) 
+        countText.text = "Count: " + count.ToString() + " Life:" + life.ToString(); 
+        if(count >= 11 && gameOver == false) 
         {
-            door1.SetActive(false); 
-             
+            winTextObject.SetActive(true);
+            gameWin = true;
         }
     }
 
