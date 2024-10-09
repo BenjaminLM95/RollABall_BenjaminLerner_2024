@@ -24,11 +24,12 @@ public class PlayerController : MonoBehaviour
     public TextMeshProUGUI countText;
     public GameObject winTextObject;
     public GameObject gameOverText;
-    private int count;
+    private int count = 0;
     public int life = 2; 
     private bool gameOver = false;
     private bool gameWin = false;
-    public GameObject playerObject; 
+    public GameObject playerObject;
+    public GameObject GateNumber; 
     
 
     void Start()
@@ -68,6 +69,17 @@ public class PlayerController : MonoBehaviour
             gameOver = true; 
             gameOverText.SetActive(true); 
         }
+
+        if(count >= 7) 
+        {
+            GateNumber.SetActive(false);  
+        }
+
+        while (Input.GetKeyDown(KeyCode.X)) 
+        {
+            speed = 0; 
+        }
+
     }
 
 
