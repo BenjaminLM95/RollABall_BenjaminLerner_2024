@@ -25,15 +25,21 @@ public class PlayerController : MonoBehaviour
     public GameObject winTextObject;
     public GameObject gameOverText;
     private int count = 0;
-    public int life = 2; 
+    public int maxlife = 3; 
+    public int life; 
     private bool gameOver = false;
     private bool gameWin = false;
     public GameObject playerObject;
-    public GameObject GateNumber; 
+    public int GateRestriction; 
+    public GameObject GateNumber;
+    public int numberjumpsmax;
+    int numbersJump;
     
 
     void Start()
     {
+        life = maxlife;
+        numbersJump = numberjumpsmax;
         rb = GetComponent<Rigidbody>();
         count = 0;
         SetCountText();
@@ -54,13 +60,19 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
+        if(life > maxlife) 
+        {
+            life = maxlife;
+        }
+
         Vector3 playerPos = playerObject.transform.position;
 
-        if (Input.GetKeyDown(KeyCode.Space) && isGrounded && !gameOver)
+        if (Input.GetKeyDown(KeyCode.Space) && isGrounded && !gameOver && numbersJump > 0)
         {
             rb.AddForce(jump * jumpForce, ForceMode.Impulse);
-
-            isGrounded = false;            
+            numbersJump--;
+            if(numbersJump <= 0) { isGrounded = false; numbersJump = numberjumpsmax; }
+                        
         }
         SetCountText();
 
@@ -70,15 +82,10 @@ public class PlayerController : MonoBehaviour
             gameOverText.SetActive(true); 
         }
 
-        if(count >= 7) 
+        if(count >= GateRestriction) 
         {
             GateNumber.SetActive(false);  
-        }
-
-        while (Input.GetKeyDown(KeyCode.X)) 
-        {
-            speed = 0; 
-        }
+        }      
 
     }
 
@@ -94,7 +101,8 @@ public class PlayerController : MonoBehaviour
         }
         if(other.gameObject.CompareTag("Floor"))
         {
-            isGrounded = true;             
+            isGrounded = true;
+            numbersJump = numberjumpsmax;
         }
 
         if (other.gameObject.CompareTag("Bullet")) 
@@ -106,6 +114,17 @@ public class PlayerController : MonoBehaviour
                 life--;
             }
              
+        }
+
+        if(other.gameObject.CompareTag("Healing"))
+        {
+            life++;
+            other.gameObject.SetActive(false);
+        }
+
+        if (other.gameObject.CompareTag("Final Floor") && gameWin) 
+        {
+            rb.isKinematic = true; 
         }
          
     }

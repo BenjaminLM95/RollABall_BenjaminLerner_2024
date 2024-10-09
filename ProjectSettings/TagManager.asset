@@ -8,6 +8,8 @@ TagManager:
   - Floor
   - Door
   - Bullet
+  - Final Floor
+  - Healing
   layers:
   - Default
   - TransparentFX
