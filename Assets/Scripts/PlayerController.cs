@@ -38,6 +38,7 @@ public class PlayerController : MonoBehaviour
     private bool djpu = false;
     private float timeToAppear = 2f;
     private float timeWhenDisappear;
+    public int numberWin; 
 
 
 
@@ -162,10 +163,11 @@ public class PlayerController : MonoBehaviour
     void SetCountText() 
     {
         countText.text = "Count: " + count.ToString() + " Life:" + life.ToString(); 
-        if(count >= 11 && gameOver == false) 
+        if(count >= numberWin && gameOver == false) 
         {
             winTextObject.SetActive(true);
             gameWin = true;
+            speed = 0; 
         }
     }
 
