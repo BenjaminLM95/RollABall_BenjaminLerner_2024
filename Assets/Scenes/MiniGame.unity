@@ -1376,7 +1376,7 @@ MonoBehaviour:
   maxlife: 3
   life: 2
   playerObject: {fileID: 379077581}
-  GateRestriction: 5
+  GateRestriction: 7
   GateNumber: {fileID: 285038436}
   numberjumpsmax: 1
 --- !u!114 &379077588

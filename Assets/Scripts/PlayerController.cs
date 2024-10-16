@@ -34,7 +34,12 @@ public class PlayerController : MonoBehaviour
     public GameObject GateNumber;
     public int numberjumpsmax;
     int numbersJump;
-    
+    public GameObject DoubleJumpMessage;
+    private bool djpu = false;
+    private float timeToAppear = 2f;
+    private float timeWhenDisappear;
+
+
 
     void Start()
     {
@@ -45,6 +50,8 @@ public class PlayerController : MonoBehaviour
         SetCountText();
         winTextObject.SetActive(false);
         gameOverText.SetActive(false);
+        DoubleJumpMessage.SetActive(false);
+
         jump = new Vector3(0.0f, 3.0f, 0.0f); 
         
         
@@ -126,7 +133,22 @@ public class PlayerController : MonoBehaviour
         {
             rb.isKinematic = true; 
         }
-         
+
+        if (other.gameObject.CompareTag("DoubleJump_PU")) 
+        {
+            other.gameObject.SetActive(false);
+            DoubleJumpMessage.SetActive(true);
+            djpu = true;            
+            timeWhenDisappear = Time.time + timeToAppear;
+            numberjumpsmax = 2;
+            numbersJump = 0;
+        }
+
+        if (djpu && (Time.time >= timeWhenDisappear))
+        {
+            DoubleJumpMessage.SetActive(false);
+        }
+
     }
 
 

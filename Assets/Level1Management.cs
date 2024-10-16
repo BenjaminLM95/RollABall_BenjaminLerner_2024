@@ -22,7 +22,7 @@ public class Level1Management : MonoBehaviour
 
         if (obStatus) 
         {
-            System.Threading.Thread.Sleep(300);
+            System.Threading.Thread.Sleep(600);
             SceneManager.LoadScene("Level 2");
 
         }       

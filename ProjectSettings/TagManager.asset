@@ -10,6 +10,7 @@ TagManager:
   - Bullet
   - Final Floor
   - Healing
+  - DoubleJump_PU
   layers:
   - Default
   - TransparentFX
