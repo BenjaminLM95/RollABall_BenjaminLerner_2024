@@ -3,10 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement; 
 
+
 public class Level1Management : MonoBehaviour
 {
     public bool obStatus;
-    public GameObject winObject; 
+    public GameObject winObject;
+    private float timeToAppear = 1.5f;
+    private float timeWhenDisappear;
+    private bool activate = true;
 
     // Start is called before the first frame update
     void Start()
@@ -20,12 +24,16 @@ public class Level1Management : MonoBehaviour
     {
         obStatus = winObject.activeSelf;
 
-        if (obStatus) 
+        if (obStatus && activate) 
         {
-            System.Threading.Thread.Sleep(600);
-            SceneManager.LoadScene("Level 2");
+            timeWhenDisappear = Time.time + timeToAppear;
+            activate = false; 
 
-        }       
-        
+        }
+        if (Time.time >= timeWhenDisappear)
+        {
+            SceneManager.LoadScene("Level 2");
+        }        
+
     }
 }
