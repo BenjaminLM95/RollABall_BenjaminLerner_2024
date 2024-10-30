@@ -41,7 +41,7 @@ public class PlayerController : MonoBehaviour
     public int numberWin;
     public bool bulletCharge = false; 
     public GameObject playerBullet;
-    public float playerBulletSpeed = 100f;
+    private float playerBulletSpeed = -10f;
     public GameObject eyes;    
 
 
@@ -67,6 +67,8 @@ public class PlayerController : MonoBehaviour
         Vector3 movement = new Vector3(movementX, 0.0f, movementY); 
         rb.AddForce(movement * speed); 
         }
+
+        
     }
 
     private void Update()
@@ -97,17 +99,14 @@ public class PlayerController : MonoBehaviour
         {
             GateNumber.SetActive(false);  
         }
-
+        
         if (Input.GetKeyDown(KeyCode.Mouse0))
-        {            
-            ShootBullet(); 
+        {
+            ShootBullet();
         }
-        
-        
+
 
     }
-
-
 
     private void OnTriggerEnter(Collider other)
     {
@@ -202,7 +201,6 @@ public class PlayerController : MonoBehaviour
         Rigidbody tempRigidBodyBullet = tempBullet.GetComponent<Rigidbody>();
         tempRigidBodyBullet.useGravity = false;
         tempRigidBodyBullet.AddForce(tempBullet.transform.right * playerBulletSpeed, ForceMode.Impulse);
-        Debug.Log(playerBulletSpeed);
         Destroy(tempBullet, 3f);
 
     }

@@ -8,10 +8,13 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/SampleScene.unity
     guid: 99c9720ab356a0642a771bea13969a05
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/MiniGame.unity
     guid: f55df51533622dd44b8a145442873bdf
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Level 2.unity
     guid: 52f588794aa63ee48b4e5673f0dd3b63
+  - enabled: 1
+    path: Assets/Scenes/Level 3.unity
+    guid: 51b7c9c84f99aa446a52e210fd158350
   m_configObjects: {}
