@@ -9,7 +9,8 @@ public class EnemyAction : MonoBehaviour
     private float cooldownTimer;
     public GameObject enemyBullet;
     public float enemyBulletSpeed = -3.0f;
-    public GameObject eyes; 
+    public GameObject eyes;
+    public int hp = 2; 
     // Start is called before the first frame update
 
     void ShootAtPlayer()
@@ -35,9 +36,24 @@ public class EnemyAction : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        ShootAtPlayer();
+        ShootAtPlayer();  
+        if(hp <= 0) 
+        {
+            Destroy(this.gameObject);
+        }
+    }
 
-
-       
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.gameObject.CompareTag("PlayersBullet"))
+        {
+            hp--;
+            Debug.Log("Hit");
+            if(hp < 0) 
+            {
+                hp = 0; 
+            }
+            Destroy(other); 
+        }
     }
 }

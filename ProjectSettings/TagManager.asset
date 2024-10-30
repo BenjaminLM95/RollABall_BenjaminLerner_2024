@@ -11,6 +11,9 @@ TagManager:
   - Final Floor
   - Healing
   - DoubleJump_PU
+  - Trampoline
+  - PlayersBullet
+  - BulletPowerUp
   layers:
   - Default
   - TransparentFX

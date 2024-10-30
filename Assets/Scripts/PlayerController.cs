@@ -38,8 +38,11 @@ public class PlayerController : MonoBehaviour
     private bool djpu = false;
     private float timeToAppear = 2f;
     private float timeWhenDisappear;
-    public int numberWin; 
-
+    public int numberWin;
+    public bool bulletCharge = false; 
+    public GameObject playerBullet;
+    public float playerBulletSpeed = 100f;
+    public GameObject eyes;    
 
 
     void Start()
@@ -93,7 +96,14 @@ public class PlayerController : MonoBehaviour
         if(count >= GateRestriction) 
         {
             GateNumber.SetActive(false);  
-        }      
+        }
+
+        if (Input.GetKeyDown(KeyCode.Mouse0))
+        {            
+            ShootBullet(); 
+        }
+        
+        
 
     }
 
@@ -124,6 +134,14 @@ public class PlayerController : MonoBehaviour
              
         }
 
+        if (other.gameObject.CompareTag("Trampoline")) 
+        {
+            rb.AddForce(1.125f * jump * jumpForce, ForceMode.Impulse);
+            isGrounded = true;
+            numbersJump = numberjumpsmax;
+        }
+
+
         if(other.gameObject.CompareTag("Healing"))
         {
             life++;
@@ -143,6 +161,12 @@ public class PlayerController : MonoBehaviour
             timeWhenDisappear = Time.time + timeToAppear;
             numberjumpsmax = 2;
             numbersJump = 0;
+        }
+
+        if (other.gameObject.CompareTag("BulletPowerUp")) 
+        {
+            bulletCharge = true;
+            other.gameObject.SetActive(false);
         }
 
         if (djpu && (Time.time >= timeWhenDisappear))
@@ -169,6 +193,18 @@ public class PlayerController : MonoBehaviour
             gameWin = true;
             speed = 0; 
         }
+    }
+
+    void ShootBullet()
+    {        
+
+        GameObject tempBullet = Instantiate(playerBullet, eyes.transform.position, eyes.transform.rotation) as GameObject;
+        Rigidbody tempRigidBodyBullet = tempBullet.GetComponent<Rigidbody>();
+        tempRigidBodyBullet.useGravity = false;
+        tempRigidBodyBullet.AddForce(tempBullet.transform.right * playerBulletSpeed, ForceMode.Impulse);
+        Debug.Log(playerBulletSpeed);
+        Destroy(tempBullet, 3f);
+
     }
 
 }

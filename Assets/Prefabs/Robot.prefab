@@ -115,6 +115,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1940823151551224646}
   - component: {fileID: 1732994190326759146}
+  - component: {fileID: 448670741791723516}
   m_Layer: 0
   m_Name: Robot
   m_TagString: Untagged
@@ -166,6 +167,30 @@ MonoBehaviour:
     type: 3}
   enemyBulletSpeed: -5
   eyes: {fileID: 8671040145102749851}
+  hp: 2
+--- !u!136 &448670741791723516
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 419021190886627626}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Height: 1
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1261542050915057729
 GameObject:
   m_ObjectHideFlags: 0
