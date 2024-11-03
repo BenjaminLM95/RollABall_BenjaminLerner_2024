@@ -48,7 +48,6 @@ public class EnemyAction : MonoBehaviour
         if(other.gameObject.CompareTag("PlayersBullet"))
         {
             hp--;
-            Debug.Log("Hit");
             if(hp < 0) 
             {
                 hp = 0; 
