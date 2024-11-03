@@ -100,7 +100,7 @@ public class PlayerController : MonoBehaviour
             GateNumber.SetActive(false);  
         }
         
-        if (Input.GetKeyDown(KeyCode.Mouse0))
+        if (Input.GetKeyDown(KeyCode.Mouse0) && bulletCharge)
         {
             ShootBullet();
         }

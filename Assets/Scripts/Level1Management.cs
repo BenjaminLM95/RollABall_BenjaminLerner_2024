@@ -11,6 +11,7 @@ public class Level1Management : MonoBehaviour
     private float timeToAppear = 1.5f;
     private float timeWhenDisappear;
     private bool activate = true;
+    public string nextLevel; 
 
     // Start is called before the first frame update
     void Start()
@@ -32,7 +33,7 @@ public class Level1Management : MonoBehaviour
         }
         if (Time.time >= timeWhenDisappear)
         {
-            SceneManager.LoadScene("Level 2");
+            SceneManager.LoadScene(nextLevel);
         }        
 
     }

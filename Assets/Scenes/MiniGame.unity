@@ -294,6 +294,7 @@ MonoBehaviour:
     type: 3}
   enemyBulletSpeed: 10
   eyes: {fileID: 502945913}
+  hp: 2
 --- !u!136 &148050921
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -747,6 +748,7 @@ MonoBehaviour:
     type: 3}
   enemyBulletSpeed: 10
   eyes: {fileID: 1934158522}
+  hp: 2
 --- !u!136 &241998152
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1381,6 +1383,10 @@ MonoBehaviour:
   numberjumpsmax: 1
   DoubleJumpMessage: {fileID: 866292141}
   numberWin: 11
+  bulletCharge: 0
+  playerBullet: {fileID: 8402041783696565070, guid: f0f8e75903631e845ad906432df41b96,
+    type: 3}
+  eyes: {fileID: 1676245783}
 --- !u!114 &379077588
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3592,6 +3598,7 @@ MonoBehaviour:
     type: 3}
   enemyBulletSpeed: 10
   eyes: {fileID: 111476084}
+  hp: 2
 --- !u!136 &1259135092
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -4603,6 +4610,51 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1657650766}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1676245783
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1676245784}
+  - component: {fileID: 1676245785}
+  m_Layer: 0
+  m_Name: PlayerEyes
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1676245784
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1676245783}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: 0.5, z: 0.761}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+--- !u!114 &1676245785
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1676245783}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30abfc302fe302349aeab21b067cde42, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 379077581}
 --- !u!4 &1728434372 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 409156838719949316, guid: 7064337f0ab9e724eb57b0aeea0d4022,
@@ -5360,6 +5412,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   obStatus: 0
   winObject: {fileID: 1967234462}
+  nextLevel: Level 2
 --- !u!1001 &1979804426
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5538,6 +5591,7 @@ MonoBehaviour:
     type: 3}
   enemyBulletSpeed: 10
   eyes: {fileID: 348186772}
+  hp: 2
 --- !u!136 &2011239735
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -5663,6 +5717,7 @@ MonoBehaviour:
     type: 3}
   enemyBulletSpeed: 10
   eyes: {fileID: 1532703143}
+  hp: 2
 --- !u!136 &2033524393
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -6251,3 +6306,4 @@ SceneRoots:
   - {fileID: 1767316318}
   - {fileID: 1639138722}
   - {fileID: 250623948}
+  - {fileID: 1676245784}
