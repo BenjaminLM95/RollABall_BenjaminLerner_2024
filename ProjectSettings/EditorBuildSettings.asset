@@ -9,7 +9,10 @@ EditorBuildSettings:
     path: Assets/Scenes/SampleScene.unity
     guid: 99c9720ab356a0642a771bea13969a05
   - enabled: 1
-    path: Assets/Scenes/MiniGame.unity
+    path: Assets/Scenes/Menu.unity
+    guid: d342b3c37c69e54438235d39db4e82fb
+  - enabled: 1
+    path: Assets/Scenes/Level 1.unity
     guid: f55df51533622dd44b8a145442873bdf
   - enabled: 1
     path: Assets/Scenes/Level 2.unity
@@ -17,4 +20,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Level 3.unity
     guid: 51b7c9c84f99aa446a52e210fd158350
+  - enabled: 1
+    path: Assets/Scenes/SelectLevel.unity
+    guid: 8a0463145f14b2c46b83969730ac3f09
+  - enabled: 1
+    path: Assets/Scenes/InstructionScene.unity
+    guid: 0021667b7eebffc4caffa28fb3172c09
   m_configObjects: {}

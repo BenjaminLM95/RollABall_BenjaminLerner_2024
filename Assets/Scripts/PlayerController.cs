@@ -10,6 +10,7 @@ using JetBrains.Annotations;
 using System;
 using System.Security.Cryptography;
 using System.Collections.Specialized;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -42,11 +43,17 @@ public class PlayerController : MonoBehaviour
     public bool bulletCharge = false; 
     public GameObject playerBullet;
     private float playerBulletSpeed = -10f;
-    public GameObject eyes;    
+    public GameObject eyes;
+    private Scene m_Scene;
+    private string sceneName;
+    private bool pause; 
 
 
     void Start()
     {
+
+        m_Scene = SceneManager.GetActiveScene();
+        sceneName = m_Scene.name;
         life = maxlife;
         numbersJump = numberjumpsmax;
         rb = GetComponent<Rigidbody>();
@@ -55,7 +62,7 @@ public class PlayerController : MonoBehaviour
         winTextObject.SetActive(false);
         gameOverText.SetActive(false);
         DoubleJumpMessage.SetActive(false);
-
+        pause = true; 
         jump = new Vector3(0.0f, 3.0f, 0.0f); 
         
         
@@ -103,6 +110,26 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Mouse0) && bulletCharge)
         {
             ShootBullet();
+        }
+
+        if(Input.GetKeyDown(KeyCode.R))
+        {
+            SceneManager.LoadScene(sceneName);
+        }
+
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            if (pause)
+            {
+                Time.timeScale = 0;
+                pause = false;
+            }
+            else 
+            {
+                Time.timeScale = 1;
+                pause = true; 
+            }
+             
         }
 
 
