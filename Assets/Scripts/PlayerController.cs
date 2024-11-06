@@ -37,7 +37,7 @@ public class PlayerController : MonoBehaviour
     int numbersJump;
     public GameObject DoubleJumpMessage;
     private bool djpu = false;
-    private float timeToAppear = 2f;
+    private float timeToAppear = 8f;
     private float timeWhenDisappear;
     public int numberWin;
     public bool bulletCharge = false; 
@@ -132,6 +132,12 @@ public class PlayerController : MonoBehaviour
              
         }
 
+        if (djpu && (Time.time >= timeWhenDisappear))
+        {
+            DoubleJumpMessage.SetActive(false);
+            djpu = false;   
+        }
+
 
     }
 
@@ -193,12 +199,13 @@ public class PlayerController : MonoBehaviour
         {
             bulletCharge = true;
             other.gameObject.SetActive(false);
+            DoubleJumpMessage.SetActive(true);
+            djpu = true;
+            timeWhenDisappear = Time.time + timeToAppear;
+            
+            
         }
-
-        if (djpu && (Time.time >= timeWhenDisappear))
-        {
-            DoubleJumpMessage.SetActive(false);
-        }
+                
 
     }
 
@@ -212,7 +219,7 @@ public class PlayerController : MonoBehaviour
 
     void SetCountText() 
     {
-        countText.text = "Count: " + count.ToString() + " Life:" + life.ToString(); 
+        countText.text = "Count: " + count.ToString() + " / " + numberWin + " Life: " + life.ToString(); 
         if(count >= numberWin && gameOver == false) 
         {
             winTextObject.SetActive(true);

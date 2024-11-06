@@ -2208,7 +2208,7 @@ PrefabInstance:
     - target: {fileID: 409156838719949316, guid: 7064337f0ab9e724eb57b0aeea0d4022,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 114.6
+      value: 114.52
       objectReference: {fileID: 0}
     - target: {fileID: 409156838719949316, guid: 7064337f0ab9e724eb57b0aeea0d4022,
         type: 3}
@@ -3817,7 +3817,7 @@ Transform:
   m_GameObject: {fileID: 1432477305}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -16.89, y: -20, z: 119.7}
+  m_LocalPosition: {x: -16.89, y: -20, z: 119.68}
   m_LocalScale: {x: 0.25, y: 1, z: 1.5}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5038,14 +5038,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Move with the key arrows
-
-    Jump with space
-
-    Collect 11 yellow cubes
-
-    If
-    you get hit with a red laser, you lose 1 life'
+  m_text: "Move with the key arrows or AWSD.\nJump with space.\nCollect 11 yellow
+    cubes.\nIf you get hit with a red laser, \nyou lose 1 life"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -5072,8 +5066,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 24
-  m_fontSizeBase: 24
+  m_fontSize: 22
+  m_fontSizeBase: 22
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18

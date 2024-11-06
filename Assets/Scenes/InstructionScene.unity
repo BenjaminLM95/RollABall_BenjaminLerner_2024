@@ -515,10 +515,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "The game consists on move the ball and collect the collectables which
-    are the yellow cubes. Each level has their own number of yellow cubes to collect
-    to win. \n\nYou can move with the arrows button or AWSD. \nYou can jump with
-    space.\nYou have 3 lives.\nYou lose when your live reach to 0 or fall to deep. "
+  m_text: "The game consists on moving the ball and collecting all the yellow cubes.
+    Each level has their own number of yellow cubes to collect to win. \n\nYou can
+    move with the arrows buttons or AWSD. \nYou can jump with space.\nYou have 3
+    lives.\nYou lose when your live reach to 0 or fall too deep. "
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -545,8 +545,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 32
-  m_fontSizeBase: 32
+  m_fontSize: 28
+  m_fontSizeBase: 28
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -883,8 +883,8 @@ Camera:
   m_GameObject: {fileID: 1004524006}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_ClearFlags: 2
+  m_BackGroundColor: {r: 0.0627451, g: 0.47843137, b: 0.5529412, a: 1}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
