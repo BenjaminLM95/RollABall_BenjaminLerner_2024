@@ -46,7 +46,9 @@ public class PlayerController : MonoBehaviour
     public GameObject eyes;
     private Scene m_Scene;
     private string sceneName;
-    private bool pause; 
+    private bool pause;
+    public GameObject instructs;
+    private bool check_intruct; 
 
 
     void Start()
@@ -63,10 +65,11 @@ public class PlayerController : MonoBehaviour
         gameOverText.SetActive(false);
         DoubleJumpMessage.SetActive(false);
         pause = true; 
-        jump = new Vector3(0.0f, 3.0f, 0.0f); 
-        
-        
-    }
+        jump = new Vector3(0.0f, 3.0f, 0.0f);
+        check_intruct = true;
+
+
+}
 
     private void FixedUpdate()
     {
@@ -132,7 +135,28 @@ public class PlayerController : MonoBehaviour
              
         }
 
-        if (djpu && (Time.time >= timeWhenDisappear))
+        if (Input.GetKeyDown(KeyCode.M)) 
+        {
+            SceneManager.LoadScene("Menu"); 
+        }
+
+        if (Input.GetKeyDown(KeyCode.I)) 
+        {
+            if (check_intruct) 
+            {
+                Time.timeScale = 0;
+                instructs.gameObject.SetActive(true);
+                check_intruct = false;
+            }
+            else 
+            {
+                Time.timeScale = 1;
+                instructs.gameObject.SetActive(false);
+                check_intruct = true; 
+            }
+        }
+
+            if (djpu && (Time.time >= timeWhenDisappear))
         {
             DoubleJumpMessage.SetActive(false);
             djpu = false;   

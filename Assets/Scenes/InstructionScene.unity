@@ -492,7 +492,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 2, y: -59}
+  m_AnchoredPosition: {x: 2, y: -25}
   m_SizeDelta: {x: 900, y: 350}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &445694396
@@ -517,8 +517,9 @@ MonoBehaviour:
       m_Calls: []
   m_text: "The game consists on moving the ball and collecting all the yellow cubes.
     Each level has their own number of yellow cubes to collect to win. \n\nYou can
-    move with the arrows buttons or AWSD. \nYou can jump with space.\nYou have 3
-    lives.\nYou lose when your live reach to 0 or fall too deep. "
+    move with the arrow buttons or AWSD. \nYou can jump with space.\nYou have 3 lives
+    at max.\nYou lose when your live reach to 0 or you fall too deep. \nYou can pause
+    the level by pressing 'P' and restart the level by pressing 'R'."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
