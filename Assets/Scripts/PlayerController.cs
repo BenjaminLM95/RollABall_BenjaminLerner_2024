@@ -48,7 +48,11 @@ public class PlayerController : MonoBehaviour
     private string sceneName;
     private bool pause;
     public GameObject instructs;
-    private bool check_intruct; 
+    private bool check_intruct;
+    public GameObject checkPoint;
+    private Vector3 chkPos = new Vector3();
+    float coolDown;
+    float timeRef;
 
 
     void Start()
@@ -67,6 +71,9 @@ public class PlayerController : MonoBehaviour
         pause = true; 
         jump = new Vector3(0.0f, 3.0f, 0.0f);
         check_intruct = true;
+        chkPos = checkPoint.transform.position;
+        coolDown = 0.25f;
+        
 
 
 }
@@ -99,11 +106,33 @@ public class PlayerController : MonoBehaviour
         }
         SetCountText();
 
-        if((life == 0 || playerPos.y < -20f) && gameWin == false) 
+        if((life == 0 || playerPos.y < -30f) && gameWin == false) 
         {
             gameOver = true; 
             gameOverText.SetActive(true); 
         }
+
+        chkPos = checkPoint.transform.position;
+
+        if (playerPos.y < -20f && life > 1) 
+        {
+            life--;
+            rb.freezeRotation = true;
+            Debug.Log("Freeze"); 
+            transform.position = chkPos;
+            timeRef = Time.time + coolDown;
+        }
+
+
+        if (rb.freezeRotation) 
+        {             
+            if(Time.time > timeRef) 
+            {
+                rb.freezeRotation = false;
+            }
+        }
+
+       
 
         if(count >= GateRestriction) 
         {
