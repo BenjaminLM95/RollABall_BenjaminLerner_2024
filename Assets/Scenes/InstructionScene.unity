@@ -518,8 +518,9 @@ MonoBehaviour:
   m_text: "The game consists on moving the ball and collecting all the yellow cubes.
     Each level has their own number of yellow cubes to collect to win. \n\nYou can
     move with the arrow buttons or AWSD. \nYou can jump with space.\nYou have 3 lives
-    at max.\nYou lose when your live reach to 0 or you fall too deep. \nYou can pause
-    the level by pressing 'P' and restart the level by pressing 'R'."
+    at max.\nIf you fall, you lose 1 life.\nWhen your life reaches to 0, you lose.
+    \nYou can pause the level by pressing 'P' and restart the level by pressing 'R'.\nYou
+    can zoom in with 'Z', zoom out with 'X' and reset camera setting with 'C'."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -546,8 +547,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 24
-  m_fontSizeBase: 24
+  m_fontSize: 20
+  m_fontSizeBase: 20
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18

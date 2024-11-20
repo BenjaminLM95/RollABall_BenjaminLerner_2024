@@ -139,7 +139,7 @@ public class PlayerController : MonoBehaviour
             GateNumber.SetActive(false);  
         }
         
-        if (Input.GetKeyDown(KeyCode.Mouse0) && bulletCharge)
+        if (Input.GetKeyDown(KeyCode.Mouse0) && bulletCharge && Time.timeScale > 0)
         {
             ShootBullet();
         }
@@ -288,7 +288,7 @@ public class PlayerController : MonoBehaviour
         Rigidbody tempRigidBodyBullet = tempBullet.GetComponent<Rigidbody>();
         tempRigidBodyBullet.useGravity = false;
         tempRigidBodyBullet.AddForce(tempBullet.transform.right * playerBulletSpeed, ForceMode.Impulse);
-        Destroy(tempBullet, 3f);
+        Destroy(tempBullet, 1.5f);
 
     }
 

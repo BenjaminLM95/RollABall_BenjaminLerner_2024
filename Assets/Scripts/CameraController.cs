@@ -25,21 +25,22 @@ public class CameraController : MonoBehaviour
 
     private void Update()
     {
+        if(Time.timeScale > 0) { 
         float h = horizontalSpeed * Input.GetAxis("Mouse X");
-        transform.eulerAngles += new Vector3(0, h, 0); 
+        transform.eulerAngles += new Vector3(0, h, 0); }
 
 
-        if(Input.GetKeyDown(KeyCode.Z))
+        if(Input.GetKeyDown(KeyCode.Z) && Time.timeScale > 0)
         {
             if(Camera.main.fieldOfView < 80.0f)
             Camera.main.fieldOfView += 1.0f; 
         }
-        if (Input.GetKeyDown(KeyCode.X))
+        if (Input.GetKeyDown(KeyCode.X) && Time.timeScale > 0)
         {
             if (Camera.main.fieldOfView > 40.0f)
                 Camera.main.fieldOfView -= 1.0f;
         }
-        if (Input.GetKeyDown(KeyCode.C))
+        if (Input.GetKeyDown(KeyCode.C) && Time.timeScale > 0)
         {
             Camera.main.fieldOfView = cameraFieldView;
         }
