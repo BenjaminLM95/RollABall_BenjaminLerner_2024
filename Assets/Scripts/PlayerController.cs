@@ -36,6 +36,7 @@ public class PlayerController : MonoBehaviour
     public int numberjumpsmax;
     int numbersJump;
     public GameObject DoubleJumpMessage;
+    public GameObject BulletPUMessage; 
     private bool djpu = false;
     private float timeToAppear = 8f;
     private float timeWhenDisappear;
@@ -187,7 +188,11 @@ public class PlayerController : MonoBehaviour
 
             if (djpu && (Time.time >= timeWhenDisappear))
         {
+            if(DoubleJumpMessage.activeSelf)
             DoubleJumpMessage.SetActive(false);
+            else if (BulletPUMessage.activeSelf)
+            BulletPUMessage.SetActive(false);   
+
             djpu = false;   
         }
 
@@ -252,13 +257,18 @@ public class PlayerController : MonoBehaviour
         {
             bulletCharge = true;
             other.gameObject.SetActive(false);
-            DoubleJumpMessage.SetActive(true);
+            BulletPUMessage.SetActive(true);
             djpu = true;
-            timeWhenDisappear = Time.time + timeToAppear;
-            
+            timeWhenDisappear = Time.time + timeToAppear;          
             
         }
                 
+        if(other.gameObject.name.Contains("mxHP") )
+        {
+            maxlife = 5;
+            life = maxlife;
+            other.gameObject.SetActive(false);
+        }
 
     }
 

@@ -6,23 +6,37 @@ public class BossWeakPoint : MonoBehaviour
 {
     public int hp = 2;
     public Material damagedMaterial;
-    public Material deadMaterial; 
-    
+    public Material deadMaterial;
+    public BossRobotScript bScript;
+    public GameObject Boss;
+    //private bool firstDamage;
+    //private bool secondDamage; 
+
+    private void Start()
+    {
+        bScript = Boss.GetComponent<BossRobotScript>(); 
+    }
+
     
     // Update is called once per frame
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("PlayersBullet"))
         {
-            hp--;
+            if(hp>0)
+                hp--;
+
             if(hp == 1) 
             {
-                this.GetComponent<Renderer>().material = damagedMaterial; 
+                this.GetComponent<Renderer>().material = damagedMaterial;
+                bScript.dealDamage(1); 
+                
             }
-            if (hp < 0)
+            if (hp <= 0)
             {
                 hp = 0;
-                this.GetComponent<Renderer>().material = deadMaterial; 
+                this.GetComponent<Renderer>().material = deadMaterial;
+                bScript.dealDamage(2); 
             }
             
         }

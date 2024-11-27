@@ -43,6 +43,11 @@ public class MainMenu : MonoBehaviour
         SceneManager.LoadScene("InstructionScene");
     }
 
+    public void selectBossLevel() 
+    {
+        SceneManager.LoadScene("BossFight");
+    }
+
    
 }
 

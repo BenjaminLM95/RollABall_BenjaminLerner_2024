@@ -61,6 +61,7 @@ public class bomberScript : MonoBehaviour
         if (hp <= 0)
         {
             GameObject rewardObj = Instantiate(reward, transform.position, transform.rotation) as GameObject; 
+            rewardObj.gameObject.SetActive(true);
             Destroy(this.gameObject);
         }
 
