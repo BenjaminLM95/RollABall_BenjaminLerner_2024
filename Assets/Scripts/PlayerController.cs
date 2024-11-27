@@ -40,6 +40,9 @@ public class PlayerController : MonoBehaviour
     private bool djpu = false;
     private float timeToAppear = 8f;
     private float timeWhenDisappear;
+    private bool djpu2 = false;
+    private float timeToAppear2 = 1f;
+    private float timeWhenDisappear2;
     public int numberWin;
     public bool bulletCharge = false; 
     public GameObject playerBullet;
@@ -54,11 +57,14 @@ public class PlayerController : MonoBehaviour
     private Vector3 chkPos = new Vector3();
     float coolDown;
     float timeRef;
+    private bool normalSpeed;
+    public TextMeshProUGUI speedtext;
+    public GameObject mxhpIncreasedMsg; 
 
 
     void Start()
     {
-
+        speed = 10; 
         m_Scene = SceneManager.GetActiveScene();
         sceneName = m_Scene.name;
         life = maxlife;
@@ -186,14 +192,46 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-            if (djpu && (Time.time >= timeWhenDisappear))
+        if (djpu && (Time.time >= timeWhenDisappear))
         {
-            if(DoubleJumpMessage.activeSelf)
-            DoubleJumpMessage.SetActive(false);
+            if (DoubleJumpMessage.activeSelf)
+                DoubleJumpMessage.SetActive(false);
             else if (BulletPUMessage.activeSelf)
-            BulletPUMessage.SetActive(false);   
+                BulletPUMessage.SetActive(false);
+            else if (mxhpIncreasedMsg.activeSelf)
+                mxhpIncreasedMsg.SetActive(false); 
 
             djpu = false;   
+        }
+
+        if(Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKeyDown(KeyCode.RightShift)) 
+        {
+            if (normalSpeed) 
+            {
+                speed = 6;
+                speedtext.gameObject.SetActive(true);
+                speedtext.text = "Slow Speed"; 
+                normalSpeed = false;
+                djpu2 = true;
+                timeWhenDisappear2 = Time.time + timeToAppear2;
+            }
+            else 
+            {
+                speed = 10;
+                speedtext.gameObject.SetActive(true);
+                speedtext.text = "Normal Speed";
+                normalSpeed = true;
+                djpu2 = true;
+                timeWhenDisappear2 = Time.time + timeToAppear2;
+            }
+        }
+
+        if (djpu2 && (Time.time >= timeWhenDisappear2))
+        {
+            if (speedtext.gameObject.activeSelf)
+                speedtext.gameObject.SetActive(false);            
+
+            djpu2 = false;
         }
 
 
@@ -265,6 +303,9 @@ public class PlayerController : MonoBehaviour
                 
         if(other.gameObject.name.Contains("mxHP") )
         {
+            mxhpIncreasedMsg.SetActive(true);
+            djpu = true;
+            timeWhenDisappear = Time.time + timeToAppear;
             maxlife = 5;
             life = maxlife;
             other.gameObject.SetActive(false);
@@ -282,7 +323,7 @@ public class PlayerController : MonoBehaviour
 
     void SetCountText() 
     {
-        countText.text = "Count: " + count.ToString() + " / " + numberWin + " Life: " + life.ToString(); 
+        countText.text = "Count: " + count.ToString() + " / " + numberWin + " HP: " + life.ToString(); 
         if(count >= numberWin && gameOver == false) 
         {
             winTextObject.SetActive(true);

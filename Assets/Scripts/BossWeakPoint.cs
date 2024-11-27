@@ -9,12 +9,14 @@ public class BossWeakPoint : MonoBehaviour
     public Material deadMaterial;
     public BossRobotScript bScript;
     public GameObject Boss;
+    private bool inmune;
     //private bool firstDamage;
     //private bool secondDamage; 
 
     private void Start()
     {
-        bScript = Boss.GetComponent<BossRobotScript>(); 
+        bScript = Boss.GetComponent<BossRobotScript>();
+        inmune = false;
     }
 
     
@@ -35,8 +37,11 @@ public class BossWeakPoint : MonoBehaviour
             if (hp <= 0)
             {
                 hp = 0;
-                this.GetComponent<Renderer>().material = deadMaterial;
-                bScript.dealDamage(2); 
+                this.GetComponent<Renderer>().material = deadMaterial;  
+                if(!inmune)
+                bScript.dealDamage(2);
+
+                inmune = true; 
             }
             
         }

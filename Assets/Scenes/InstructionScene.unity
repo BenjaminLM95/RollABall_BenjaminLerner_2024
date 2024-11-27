@@ -520,7 +520,8 @@ MonoBehaviour:
     move with the arrow buttons or AWSD. \nYou can jump with space.\nYou have 3 lives
     at max.\nIf you fall, you lose 1 life.\nWhen your life reaches to 0, you lose.
     \nYou can pause the level by pressing 'P' and restart the level by pressing 'R'.\nYou
-    can zoom in with 'Z', zoom out with 'X' and reset camera setting with 'C'."
+    can zoom in with 'Z', zoom out with 'X' and reset camera setting with 'C'.\nPressing
+    'Shift' you can change your speed to slower or normal speed"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
