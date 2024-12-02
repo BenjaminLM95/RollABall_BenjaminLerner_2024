@@ -8,12 +8,21 @@ public class SelfDirectedBullets : MonoBehaviour
     private float cooldown = 2;
     private float cooldownTimer;
     public GameObject enemyBullet;
-    public float enemyBulletSpeed = -3.0f;
+    public float enemyBulletSpeed;
     public GameObject eyes;
     public GameObject player;
     public float distance;
-    public Vector3 directionTo = new Vector3(); 
-    
+    public Vector3 directionTo = new Vector3();
+    public BossRobotScript brs;
+    public GameObject theBoss;
+
+    private void Start()
+    {
+        theBoss = GameObject.Find("BossRobot");
+        brs = theBoss.GetComponent<BossRobotScript>();        
+        enemyBulletSpeed = -6f; 
+    }
+
     void ShootAtPlayer()
     {
         float distance = Vector3.Distance(transform.position, player.transform.position);
@@ -40,7 +49,22 @@ public class SelfDirectedBullets : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        ShootAtPlayer(); 
+        ShootAtPlayer();
+
+        if (brs.health > 15)
+        {
+            enemyBulletSpeed = -6f;
+        }
+        else if (brs.health > 6)
+        {
+            enemyBulletSpeed = -10f;
+        }
+        else if (brs.health > 0)
+        {
+            enemyBulletSpeed = -12.5f;
+        }
+        else
+            enemyBulletSpeed = -5f; 
 
 
     }
